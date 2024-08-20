@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Card, Container, Row, Col } from 'react-bootstrap'
+import { Card, Container, Row, Col, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
 export default function HomePage () {
@@ -20,8 +20,16 @@ export default function HomePage () {
   const detailsPage = product => {
     navigation('product', { state: { id: product.id } })
   }
+
+  const cardPage = () => { 
+     navigation('cart')
+  }
   return (
     <Container className='mt-4'>
+      <Button variant='primary' onClick={() => cardPage()}>
+            see all Cart
+          </Button>
+
       <Row>
         {productData && productData.map(product => (
           <Col key={product.id} sm={12} md={6} lg={4} className='mb-4'>
